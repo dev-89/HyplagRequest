@@ -1,0 +1,2 @@
+class ResultNotReadyException(Exception):
+  pass
