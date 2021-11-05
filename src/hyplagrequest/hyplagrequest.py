@@ -1,10 +1,10 @@
 import logging
 import asyncio
 
-from async_request import AsyncRequest
-from settings      import HyplagConfig
-from datastructures.datastructures import *
-from exceptions import ResultNotReadyException
+from .async_request import AsyncRequest
+from .settings      import HyplagConfig
+from .datastructures.datastructures import *
+from .exceptions import ResultNotReadyException
 
 def returned_typed_list(data_list, class_type):
   return_list = []

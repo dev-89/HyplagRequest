@@ -5,7 +5,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from os import environ
 
-from jwt_token import JwtToken
+from .jwt_token import JwtToken
 
 class HyplagConfig:
 

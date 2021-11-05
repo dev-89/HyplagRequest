@@ -10,8 +10,8 @@ import os
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 from pathlib import Path
 
-from settings import HyplagConfig
-from exceptions import ResultNotReadyException
+from .settings import HyplagConfig
+from .exceptions import ResultNotReadyException
 
 class AsyncRequest():
 
