@@ -32,7 +32,7 @@ HyplagRequestPy provides a python interface and CLI to communicate with the Hypl
   include_package_data=True,
   zip_safe=False,
   install_requires=[
-    "aiohttp>=3.7.5",
+    "aiohttp>=3.8.0",
     "aiosignal",
     "async-timeout",
     "attrs",
