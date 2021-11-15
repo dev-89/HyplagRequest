@@ -1,10 +1,11 @@
 from setuptools import setup, find_packages
+from pip.req import parse_requirements
 
 print(find_packages(where="src"))
 
 setup(
   name="hyplagrequest",
-  version="0.0.1",
+  version="0.0.2",
   package_dir={"": "src"},
   packages=find_packages(where="src"),  author='Kay Herklotz',
   author_email='kay.herklotz@gmail.com',
@@ -32,13 +33,13 @@ HyplagRequestPy provides a python interface and CLI to communicate with the Hypl
   include_package_data=True,
   zip_safe=False,
   install_requires=[
-    "aiohttp==3.8.0",
-    "aiosignal==1.2.0",
-    "async-timeout==4.0.0",
-    "attrs==21.2.0",
-    "certifi==2020.12.5",
-    "cffi==1.15.0",
-    "chardet==4.0.0",
+    "aiohttp",
+    "aiosignal",
+    "async-timeout",
+    "attrs",
+    "certifi",
+    "cffi",
+    "chardet",
     "charset-normalizer==2.0.7",
     "cryptography==35.0.0",
     "frozenlist==1.2.0",
@@ -47,7 +48,7 @@ HyplagRequestPy provides a python interface and CLI to communicate with the Hypl
     "pathlib==1.0.1",
     "pycparser==2.20",
     "pydantic==1.8.2",
-    "PyJWT==2.3.0",
+    "PyJWT",
     "python-dotenv==0.17.1",
     "requests==2.25.1",
     "requests-toolbelt==0.9.1",
