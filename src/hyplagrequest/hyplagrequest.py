@@ -26,7 +26,7 @@ class HyplagRequest:
     self.logger = logging.getLogger(__name__)
 
   def retrieve_algorithms(self):
-    result = self.request.send_single_header_request('/algorithm')
+    result = asyncio.run(self.request.send_single_header_request('/algorithm'))
     return returned_typed_list(result, AlgorithmStrcture)
 
   def get_document_info(self, id):
