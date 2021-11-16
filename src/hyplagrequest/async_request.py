@@ -6,6 +6,7 @@ import asyncio
 import time
 import jwt
 import os
+from  urllib.parse import urlencode
 
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 from pathlib import Path
@@ -29,16 +30,19 @@ class AsyncRequest():
     self.logger = logging.getLogger(__name__)
     self.config = hyplagConfig
 
-  async def send_json_request(self, session, url, json, verb):
+  async def send_json_request(self, session, url, json, verb, params=None):
+    url = self.config.token.host + url
     async with session.request(
       method=verb, 
       url=url, 
       json=json, 
+      params=params,
       headers={'Authorization': f'Bearer {self.config.token.access_token}'}) as resp:
-      pokemon = await resp.json()
-      return pokemon['name']
+      data = await resp.read()
+      return data
 
   async def send_header_request(self, session, url, verb, params=None):
+    print(self.config.token.host+url)
     async with session.request(
       method=verb, 
       url=self.config.token.host+url, 
@@ -72,8 +76,8 @@ class AsyncRequest():
   @Decorators.refreshToken
   async def send_single_json_request(self, url, json, verb='POST', params=None):
     async with aiohttp.ClientSession() as session:
-      response = await self.send_json_request(session, url, verb, params)
-      return json.loads(response)
+      response = await self.send_json_request(session, url, json, verb, params=params)
+      return response
 
   @Decorators.refreshToken
   async def send_multiple_json_requests(self, url, json_list, verb='POST', params=None):

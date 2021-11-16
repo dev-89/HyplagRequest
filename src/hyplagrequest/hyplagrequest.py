@@ -51,18 +51,14 @@ class HyplagRequest:
     urls = ['/document/' + str(id) + '/authors' for id in ids]
     result = asyncio.run(self.request.send_multiple_header_requests(urls, verb='GET'))
     return returned_typed_list(result, Author)
-
-  def get_document_authors(self, id) -> dict:
-    result = asyncio.run(self.request.send_multiple_header_requests('/document/' + str(id) + '/authors', verb='GET'))
-    return Author.parse_obj(result)
   
   def get_analysis_result(self, id):
-    result = asyncio.run(self.request.send_multiple_header_requests('/result/' + str(id), verb='GET'))
+    result = asyncio.run(self.request.send_single_header_request('/result/' + str(id), verb='GET'))
     return Results.parse_obj(result)
 
   def is_analysis_ready(self, id) -> bool:
     try:
-      asyncio.run(self.request.send_multiple_header_requests('/result/' + str(id), verb='GET'))
+      asyncio.run(self.request.send_single_header_request('/result/' + str(id), verb='GET'))
     except ResultNotReadyException:
       return False
     return True
