@@ -35,6 +35,7 @@ class JwtToken():
       request = requests.post(self.host+"/token/create", json=token_body)
       request.raise_for_status()
       token = request.json()['token']
+      print(token)
       self.update_exp(token)
       return token
     except Exception as e:
