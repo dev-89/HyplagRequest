@@ -26,14 +26,13 @@ class HyplagRequest:
     self.logger = logging.getLogger(__name__)
 
   def retrieve_algorithms(self):
-    result = asyncio.run(self.request.send_single_header_request('/algorithm'))
-    print(result)
+    result = asyncio.run(self.request.send_single_header_request('/algorithm', verb='GET'))
     return returned_typed_list(result, AlgorithmStrcture)
 
   def retrieve_algorithm_ids(self):
-    result = asyncio.run(self.request.send_single_header_request('/algorithm'))
-    print(result)
-    return returned_typed_list(result, AlgorithmStrcture)
+    result = asyncio.run(self.request.send_single_header_request('/algorithm', verb='GET'))
+    id_list = [id['id'] for id in result]
+    return id_list
 
   def get_document_info(self, id):
     result = asyncio.run(self.request.send_single_header_request('/document/' + str(id), verb='GET'))
