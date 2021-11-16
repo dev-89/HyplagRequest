@@ -75,7 +75,7 @@ class HyplagRequest:
       "sourceDocumentId": source_document_id
     }
     result = asyncio.run(self.request.send_single_json_request('/detection', json=body, verb='POST', params=params))
-    return result
+    return result.decode("utf-8") 
 
   def send_document(self, file_path) -> int:
     result = self.request.send_single_file(file_path)
