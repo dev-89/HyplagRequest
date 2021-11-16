@@ -44,7 +44,7 @@ class HyplagRequest:
     return result#returned_typed_list(result, HyplagDocument)
 
   def get_document_authors(self, id):
-    result = asyncio.run(self.request.send_multiple_header_requests('/document/' + str(id) + '/authors', verb='GET'))
+    result = asyncio.run(self.request.send_single_header_request('/document/' + str(id) + '/authors', verb='GET'))
     return result#Author.parse_obj(result)
 
   def get_multiple_document_authors(self, ids):
