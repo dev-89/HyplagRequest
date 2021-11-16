@@ -27,7 +27,7 @@ class HyplagRequest:
 
   def retrieve_algorithms(self):
     result = asyncio.run(self.request.send_single_header_request('/algorithm', verb='GET'))
-    return returned_typed_list(result, AlgorithmStrcture)
+    return result #returned_typed_list(result, AlgorithmStrcture)
 
   def retrieve_algorithm_ids(self):
     result = asyncio.run(self.request.send_single_header_request('/algorithm', verb='GET'))
@@ -36,25 +36,25 @@ class HyplagRequest:
 
   def get_document_info(self, id):
     result = asyncio.run(self.request.send_single_header_request('/document/' + str(id), verb='GET'))
-    return HyplagDocument.parse_obj(result)
+    return result#HyplagDocument.parse_obj(result)
 
   def get_multiple_document_info(self, ids):
     urls = ['/document/' + str(id) for id in ids]
     result = asyncio.run(self.request.send_multiple_header_requests(urls, verb='GET'))
-    return returned_typed_list(result, HyplagDocument)
+    return result#returned_typed_list(result, HyplagDocument)
 
   def get_document_authors(self, id):
     result = asyncio.run(self.request.send_multiple_header_requests('/document/' + str(id) + '/authors', verb='GET'))
-    return Author.parse_obj(result)
+    return result#Author.parse_obj(result)
 
   def get_multiple_document_authors(self, ids):
     urls = ['/document/' + str(id) + '/authors' for id in ids]
     result = asyncio.run(self.request.send_multiple_header_requests(urls, verb='GET'))
-    return returned_typed_list(result, Author)
+    return result#returned_typed_list(result, Author)
   
   def get_analysis_result(self, id):
     result = asyncio.run(self.request.send_single_header_request('/result/' + str(id), verb='GET'))
-    return Results.parse_obj(result)
+    return result#Results.parse_obj(result)
 
   def is_analysis_ready(self, id) -> bool:
     try:
