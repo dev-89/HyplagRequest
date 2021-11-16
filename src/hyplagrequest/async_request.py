@@ -42,7 +42,6 @@ class AsyncRequest():
       return data
 
   async def send_header_request(self, session, url, verb, params=None):
-    print(self.config.token.host+url)
     async with session.request(
       method=verb, 
       url=self.config.token.host+url, 

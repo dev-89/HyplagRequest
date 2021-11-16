@@ -82,5 +82,5 @@ class HyplagRequest:
     return result
 
   def get_algorithm_result(self, json) -> dict:
-    result = asyncio.run(self.request.send_single_json_request('/result/algorithms', json=json, verb='GET'))
+    result = asyncio.run(self.request.send_single_json_request('/result/algorithms', json=json, verb='POST'))
     return result
