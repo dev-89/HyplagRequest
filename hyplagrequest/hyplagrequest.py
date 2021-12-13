@@ -36,6 +36,7 @@ class HyplagRequest:
   def retrieve_algorithm_ids(self):
     try:
         _, result = self.request.send_header_request('/algorithm', verb='GET')
+        result = json.loads(result)
         id_list = [id['id'] for id in result]
         return id_list
     except Exception as e:
