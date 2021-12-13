@@ -4,9 +4,9 @@ print(find_packages(where="src"))
 
 setup(
   name="hyplagrequest",
-  version="0.0.2",
-  package_dir={"": "src"},
-  packages=find_packages(where="src"),  author='Kay Herklotz',
+  version="0.1.0",
+  packages=find_packages(),
+  author='Kay Herklotz',
   author_email='kay.herklotz@gmail.com',
   description="HyplagRequestPy is a python package to provide an access point to Hyplag.",
   long_description="""\
